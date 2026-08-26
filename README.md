@@ -14,7 +14,11 @@
 Все мануалы собраны в удобном каталоге. Залетай и выбирай то, что нужно именно тебе:
 👉 [**Открыть Ghost Store**](https://guccipucci777-commits.github.io/ghost-store/)
 
-🛒 *Доступ к материалам выдается в формате уникальных ключей после приобретения.*
+🛒 **Приобрести доступ:**
+Все пароли и доступы к материалам продаются исключительно через мой проверенный профиль:
+👉 [**Мой профиль на FunPay**](https://funpay.com/users/17427339/)
 
 ---
 *Ghost. С нами ты всегда на шаг впереди.*
+
+*© 2026 Ghost. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without permission in writing from the publisher.*
