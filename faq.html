@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Store | База знаний (FAQ)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #05020a;
+            --primary: #bb86fc;
+            --primary-glow: rgba(187, 134, 252, 0.4);
+            --card-bg: rgba(20, 15, 25, 0.6);
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+        }
+
+        body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; position: relative; overflow-x: hidden; }
+        
+        .bg-orb { position: absolute; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.5; animation: float 10s infinite alternate ease-in-out; }
+        .orb-1 { width: 350px; height: 350px; background: rgba(157, 78, 221, 0.15); top: 50px; right: -50px; }
+        .orb-2 { width: 450px; height: 450px; background: rgba(100, 50, 200, 0.1); bottom: 10%; left: -100px; animation-delay: -5s; }
+
+        @keyframes float { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(30px) scale(1.1); } }
+        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--bg-color); } ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; animation: fadeInUp 0.8s ease-out; }
+        
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; background: rgba(255,255,255,0.05); padding: 12px 24px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 40px; }
+        .back-link:hover { background: var(--primary); color: #000; border-color: var(--primary); box-shadow: 0 0 20px var(--primary-glow); transform: translateX(-5px); }
+
+        .header-title { font-size: 38px; font-weight: 800; margin-bottom: 10px; line-height: 1.2; text-align: center; color: var(--text-main); text-transform: uppercase; letter-spacing: 2px; }
+        .header-title span { color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); }
+        .header-subtitle { color: var(--text-muted); font-size: 15px; margin-bottom: 50px; text-align: center; }
+
+        .faq-wrapper { display: flex; flex-direction: column; gap: 15px; }
+
+        details { background: linear-gradient(145deg, rgba(25,20,30,0.8), rgba(15,10,20,0.8)); backdrop-filter: blur(20px); border: 1px solid rgba(187, 134, 252, 0.15); border-radius: 15px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.3); overflow: hidden; }
+        details:hover { border-color: rgba(187, 134, 252, 0.4); transform: translateY(-3px); }
+        details[open] { border-color: var(--primary); box-shadow: 0 10px 30px rgba(187, 134, 252, 0.15); transform: translateY(0); }
+        
+        summary { padding: 25px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; outline: none; position: relative; color: #fff; padding-right: 50px; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '↓'; position: absolute; right: 25px; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 20px; transition: 0.4s ease; font-weight: 800; background: rgba(187,134,252,0.1); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        details[open] summary::after { transform: translateY(-50%) rotate(180deg); background: var(--primary); color: #000; box-shadow: 0 0 15px var(--primary-glow); }
+        
+        .faq-content { padding: 0 25px 25px; color: var(--text-muted); font-size: 15px; line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 5px; padding-top: 20px; background: rgba(0,0,0,0.2); }
+        
+        .faq-content a { color: var(--primary); font-weight: bold; text-decoration: none; border-bottom: 1px dashed var(--primary); }
+        .faq-content a:hover { color: #fff; border-color: #fff; }
+
+        .support-box { margin-top: 60px; text-align: center; padding: 50px 30px; border: 1px solid rgba(187, 134, 252, 0.3); border-radius: 20px; background: linear-gradient(135deg, rgba(187, 134, 252, 0.1), rgba(0,0,0,0.5)); position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .support-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--primary), transparent); }
+        .support-box h3 { margin-top: 0; color: #fff; font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .support-box p { color: var(--text-muted); font-size: 15px; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+        .support-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--primary); color: #000; padding: 18px 40px; border-radius: 10px; font-weight: 800; text-transform: uppercase; text-decoration: none; transition: 0.3s; letter-spacing: 1.5px; box-shadow: 0 0 20px var(--primary-glow); font-size: 14px; }
+        .support-btn:hover { background: #fff; box-shadow: 0 0 30px rgba(255,255,255,0.6); transform: scale(1.05); }
+
+        /* ПОДВАЛ */
+        .modern-footer { margin-top: 100px; padding: 60px 20px 30px; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 2, 10, 0.8); backdrop-filter: blur(10px); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding-bottom: 50px; }
+        .footer-col h4 { color: var(--text-main); font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; font-weight: 800; }
+        .footer-col p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin: 0; }
+        .footer-col a { color: var(--text-muted); font-size: 14px; text-decoration: none; display: block; margin-bottom: 15px; transition: color 0.3s ease; }
+        .footer-col a:hover { color: var(--primary); }
+        
+        .footer-logo { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; letter-spacing: 1px; text-transform: uppercase; }
+        .footer-logo-icon { background: var(--primary); color: #000; width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; border-radius: 8px; font-size: 16px; font-weight: 900; }
+        
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 11px; line-height: 1.5; }
+        .footer-bottom-text { max-width: 800px; text-align: right; }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: left; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+            .footer-bottom-text { text-align: center; }
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← На главную</a>
+        
+        <div class="header-title">База <span>Знаний</span></div>
+        <div class="header-subtitle">Подробные ответы на самые частые вопросы по нашим товарам</div>
+
+        <div class="faq-wrapper">
+            <details>
+                <summary>Как происходит покупка и получение товара?</summary>
+                <div class="faq-content">
+                    Всё максимально автоматизировано. Вы выбираете товар, нажимаете кнопку <strong>«Оформить на FunPay»</strong> и оплачиваете лот. Сразу после оплаты продавец (или автовыдача) пришлет вам секретный пароль. Вы возвращаетесь на наш сайт, заходите в карточку товара и переходите по ссылке, где вводите этот пароль для полного доступа.
+                </div>
+            </details>
+
+            <details>
+                <summary>Пишет "Неверный пароль". Что делать?</summary>
+                <div class="faq-content">
+                    В 99% случаев это происходит из-за того, что при копировании пароля с FunPay вы случайно захватили лишний пробел (в начале или в конце слова). 
+                    Пожалуйста, скопируйте пароль строго по буквам или введите его вручную. Если пароль всё равно не подходит, напишите нам в ЛС на FunPay.
+                </div>
+            </details>
+
+            <details>
+                <summary>Безопасно ли использовать ваши софты/скрипты?</summary>
+                <div class="faq-content">
+                    Мы лично проверяем весь софт и скрипты на отсутствие вредоносного кода (вирусов, стиллеров). 
+                    Однако использование любого стороннего ПО в онлайн-играх всегда несет риск блокировки со стороны античитов. Мы даем лучшие методы защиты, но вы используете их на свой страх и риск.
+                </div>
+            </details>
+
+            <details>
+                <summary>Как получить Секретный бонус за отзыв?</summary>
+                <div class="faq-content">
+                    Это наша благодарность за вашу поддержку! Чтобы получить доступ к разделу с бонусом, совершите любую покупку в нашем профиле на FunPay и оставьте честный отзыв с оценкой 5 звезд. После этого напишите в переписку по заказу слово «Бонус», и мы выдадим вам пароль.
+                </div>
+            </details>
+
+            <details>
+                <summary>Возможен ли возврат средств (Refund)?</summary>
+                <div class="faq-content">
+                    Так как мы продаем цифровую информацию, которую невозможно «вернуть» после прочтения, возвраты просто потому, что вы "передумали", не осуществляются. 
+                    Возврат делается только если мы технически не смогли предоставить доступ к файлу. Подробнее читайте в наших <a href="rules.html">Правилах</a>.
+                </div>
+            </details>
+        </div>
+
+        <div class="support-box">
+            <h3>Остались вопросы?</h3>
+            <p>Наша техническая поддержка готова помочь. Мы отвечаем быстро, помогаем с установкой скриптов и решаем любые возникшие заминки с доступом.</p>
+            <a href="https://funpay.com/users/17427339/" target="_blank" class="support-btn">Написать в поддержку FunPay</a>
+        </div>
+    </div>
+
+    <!-- ПОДВАЛ (ЕДИНЫЙ ДЛЯ ВСЕХ СТРАНИЦ) -->
+    <footer class="modern-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">G</div>
+                    Ghost Store
+                </div>
+                <p>Обновления берутся из официальных источников и тщательно тестируются перед выдачей покупателям.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <a href="index.html">Мануалы</a>
+                <a href="#">Обновления</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Правовая информация</h4>
+                <a href="rules.html">Правила</a>
+                <a href="refunds.html">Политика возвратов</a>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Сообщество</h4>
+                <a href="https://funpay.com/users/17427339/" target="_blank">Наш FunPay</a>
+                <a href="mailto:averlik.support@gmail.com">averlik.support@gmail.com</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <span>Ghost Store</span>
+            <span class="footer-bottom-text">© 2026 Ghost Store. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the prior permission of the publisher.</span>
+        </div>
+    </footer>
+</body>
+</html>
